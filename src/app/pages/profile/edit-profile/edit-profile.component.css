@@ -1,0 +1,60 @@
+.save:hover {
+  background: #6bc868;
+  color: #fff;
+  cursor: pointer;
+  border: solid 1px #6ec868
+}
+.image-upload>input {
+  display: none;
+  width:0;
+  height:0;
+}
+
+.icon{
+  width: 30px!important;
+}
+.icon:hover{
+  cursor: pointer!important;
+}
+.change-image{
+  padding-left: -40px !important;
+  /*margin-left: -20px!important;*/
+
+}
+
+
+@media (min-width: 1200px) {
+  /*.border-left {*/
+  /*  border-left: 1px solid #9e9e9e;*/
+  /*}*/
+  .p-6{
+    padding: 20px!important;
+  }
+  .img:hover {
+    width: 155px!important;
+    cursor: pointer!important;
+    border: solid 1px #688ec8
+  }
+
+}
+
+@media (min-width: 770px) {
+  .border-left {
+    border-left: 1px solid #9e9e9e;
+  }
+}
+
+@media (max-width: 720px) {
+  .border-left {
+    padding:20px!important;
+    border-top-right-radius:10px!important;
+    border-top-left-radius:10px!important;
+    border-top: 1px solid #9e9e9e;
+  }
+  .img:hover {
+    cursor: pointer!important;
+    border: solid 1px #688ec8
+  }
+
+}
+

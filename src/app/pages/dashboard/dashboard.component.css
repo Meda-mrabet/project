@@ -1,0 +1,16 @@
+table {
+    width: 100%;
+  }
+  #icon:hover + .parole {
+    display: block;
+  }
+  .parole {
+    background-color: rgb(10, 10, 9);
+    width: 50px;  
+      color: aliceblue;
+    display: none;
+    border-radius: 5px;
+    text-align: center;
+
+  }
+  

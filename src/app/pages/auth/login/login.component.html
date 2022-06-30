@@ -1,0 +1,58 @@
+    <br><br><br>
+  <br>
+    <div class="main"  >
+  <!-- Sing in  Form -->
+  <section class="sign-in">
+    <div class="container">
+      <div class="signin-content">
+        <div class="signin-image">
+          <figure><img src="../../../../../assets/images/signin-image-mobile.svg" alt="sing up image"></figure>
+          <a href="/register" class="signup-image-link">Creer un compte</a>
+        </div>
+        <div class="signing-form">
+          <h2 class="form-title">Se connecter</h2>
+          <form method="POST" id="login-form" class="form register-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <mat-form-field class="form-control">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="text" required autocomplete />
+              <mat-error *ngIf="email?.hasError('required')">
+                Le mot de passe est obligatoire ?
+              </mat-error>
+              <mat-error *ngIf="email?.hasError('email')">
+
+                  L'email n'est pas valide, Veuillez ressayer!
+           </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-control">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" required />
+              <mat-error *ngIf="password?.hasError('required')">
+                Le mot de passe est obligatoire ?
+              </mat-error>
+            </mat-form-field>
+            <div class="form-group">
+              <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+              <label for="remember-me" class="label-agree-term"><span><span></span></span> Me rappeler </label>
+            </div>
+
+            <div class="form-group">
+              <a href="/resetpassword" class="forgot-password">Mot de passe oublié ?</a>
+            </div>
+
+            <div class="form-group form-button">
+              <input mat-raised-button type="submit" name="signin" id="signin" class="form-submit" value="Se connecter" />
+              <!--         [disabled]="form.invalid"-->
+            </div>
+          </form>
+          <div class="social-login">
+            <span class="social-label"> Se connecter avec </span>
+            <ul class="socials">
+              <li (click)="loginWithGoogle()"> <i class="display-flex-center fa-brands fa-google zmdi-google"
+                  style="width: 40px;height: 40px;"></i></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,71 @@
+
+
+    <a type="button"  mat-dialog-close style="padding-bottom: 20px;"> X </a>
+    <div *ngIf="ordonnance" class="container back form-control p-6" style="z-index: 999;"id="contentToConvert"
+      >
+   
+
+      <mat-grid-list cols="3" rowHeight="3:1" style=" width:100%">
+        <mat-grid-tile> <mat-grid-list cols="1" rowHeight="10:1" style=" width:100%">
+          <mat-grid-tile> Dr : {{ordonnance.nameOfCreated}}</mat-grid-tile>    <mat-grid-tile>Tel : 05393-40747</mat-grid-tile><mat-grid-tile> Cliniquebennis@hotmail.com </mat-grid-tile>    </mat-grid-list> </mat-grid-tile>    
+
+
+      
+          <mat-grid-tile><img src="../../../../assets/images/caduceus-1245442.jpeg" alt="caduceus-1245442"  class="backImage" style="height: 90px"></mat-grid-tile>
+      
+          <mat-grid-tile> <mat-grid-list cols="1" rowHeight="9:1" style=" width:100%">
+            <mat-grid-tile> Clinique bennis</mat-grid-tile> <mat-grid-tile>Tel : 05393-40747 </mat-grid-tile>     <mat-grid-tile>Address : Route de Tetouan, Tangier </mat-grid-tile>  </mat-grid-list> </mat-grid-tile>    
+      
+      
+     </mat-grid-list>
+    
+     
+ <hr style="height:5px ; color: rgb(112, 186, 243);">
+ 
+
+    <div class="row " style="width: 120% !important ;  text-align: center;"   >
+      <!-- <div class="col-md-4 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <div class="image-upload">
+            <img title="change Profile photo" class="rounded-circle mt-5 img " width="150px"
+              src="{{(user.photoURL) ? user.photoURL : '/assets/no-image.png'}}">
+          </div>
+          <span class="font-weight-bold">{{user.displayName}}</span>
+          <span class="text-black-50">{{user.phoneNumber?? ""}}</span><span> </span>
+        </div>
+      </div>
+     -->
+
+      <div style="padding-top: 170px;text-align: center;" class="col-md-8  "> 
+        <h4 style="padding-left: 30%; ">Ordonnance Medical </h4>
+        <form style="padding-left: 30%; padding-top: 50px; " #userForm="ngForm" >
+
+          <!--  -->
+
+          <p>    Fait a   <span class="font-weight-bold">{{ordonnance.city}}</span>  Le  <span class="font-weight-bold">{{ordonnance.date}}</span></p> 
+          
+
+
+          <p>   Nom & Prenom :      <span class="font-weight-bold">{{ordonnance.lastName}} {{ordonnance.firstName}}</span></p> 
+
+
+          <p style="padding-top: 50px;">    <span class="font-weight-bold" >{{ordonnance.description}} </span></p> 
+
+
+    
+  <p>    </p> 
+    
+    
+
+        </form>
+    
+      </div>
+      <!--row - left element-->
+    </div><!--  row-->
+
+ </div>
+  <div >
+    <a  type="button"  (click)="captureScreen()" mat-raised-button  mat-button
+    color="primary" style="margin-left: 300px !important; margin-top: 80px;" > Telechargement du fichier <mat-icon>get_app</mat-icon></a>
+
+  </div>

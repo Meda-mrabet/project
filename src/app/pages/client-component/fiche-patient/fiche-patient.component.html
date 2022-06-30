@@ -1,0 +1,62 @@
+
+
+
+    <div *ngIf="user" class="container form-control p-6" style="z-index: 999; "
+    style=" padding-right: 180% !important ;padding-top:3%;padding-left: 12%;padding-bottom: 100%;"  >
+    
+    
+    <div class="float-end"><button class="btn btn-close" (click)="closeModal('Cross click')" aria-label="Close"></button> </div>
+    
+    <div class="row " style="width: 600px !important ;"  id="contentToConvert" >
+      <!-- <div class="col-md-4 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+          <div class="image-upload">
+            <img title="change Profile photo" class="rounded-circle mt-5 img " width="150px"
+              src="{{(user.photoURL) ? user.photoURL : '/assets/no-image.png'}}">
+          </div>
+          <span class="font-weight-bold">{{user.displayName}}</span>
+          <span class="text-black-50">{{user.phoneNumber?? ""}}</span><span> </span>
+        </div>
+      </div>
+     -->
+
+      <div style="padding-top: 150px; padding-left: 90px;" class="col-md-8 border-left"> 
+        <h3 style="text-align:center;">Fiche Patient </h3>
+        <br>
+        <form style="width: 600px !important" #userForm="ngForm" >
+          <!--  -->
+  <p>   Nom  :      <span class="font-weight-bold">{{user.lastName}}</span></p> 
+
+  <p>   Prenom :      <span class="font-weight-bold">{{user.firstName}}</span></p> 
+
+    
+  <p>    Email :      <span class="font-weight-bold">{{user.email}}</span></p> 
+
+    
+  <p>    Telephone :      <span class="font-weight-bold">{{user.phoneNumber}}</span></p> 
+    
+    
+  <p>    address :      <span class="font-weight-bold">{{user.address.city}}</span></p> 
+
+
+        
+  
+      
+    
+     
+    
+        </form>
+    
+      </div>
+      <!--row - left element-->
+    </div><!--  row-->
+    
+     
+    <div >
+      <a  type="button"  (click)="captureScreen()" mat-raised-button [disabled]="!userForm.valid" mat-button
+      color="primary" style="margin-left: 300px !important; margin-top: 80px;" > Telechargement du fichier <mat-icon>get_app</mat-icon></a>
+    </div>
+
+    </div>
+
+

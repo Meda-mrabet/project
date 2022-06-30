@@ -1,0 +1,48 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 10%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  .option{
+      width: 100%;
+  }
+  .input{
+      height: 100px;
+      width: 100%;
+  }
+  .description{
+    margin-top: 30px;
+  }
+.title{
+  width: 600px !important;
+
+}
+::ng-deep .cdk-overlay-container{
+  z-index:1000000000;
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+}

@@ -1,0 +1,17 @@
+<ng-container [ngSwitch]="action()">
+  <!-- password reset -->
+  <ng-container *ngSwitchCase="'ChangePassword'">
+    <app-reset-new-password></app-reset-new-password>
+  </ng-container>
+
+  <!-- verify email address -->
+  <ng-container *ngSwitchCase="'EmailVerification'">
+    <app-email-verification></app-email-verification>
+  </ng-container>
+
+  <!-- default action -->
+  <ng-container *ngSwitchDefault>
+    <!--    page 404-->
+     <!-- show an error message -->
+  </ng-container>
+</ng-container>

@@ -1,0 +1,20 @@
+.mat-calendar-header{
+    background-color: aqua !important;
+}
+h3 {
+    margin: 0 0 10px;
+  }
+
+  pre {
+    background-color: #f5f5f5;
+    padding: 15px;
+  }
+  .header{
+    background-color: rgb(154, 201, 255);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: #f5f5f5;
+  }

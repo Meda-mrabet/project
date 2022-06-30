@@ -1,0 +1,171 @@
+      
+      
+      <div *ngIf="user" class="container form-control p-6" style="z-index: 999; "
+      style=" padding-right: 180% !important ;padding-top: 10%;padding-left: 12%; margin-left: -300px;"  >
+
+
+
+      <div class="float-end"><button class="btn btn-close" (click)="closeModal('Cross click')" aria-label="Close"></button> </div>
+
+      <div class="row" style="width: 600px !important ;padding-top: 20%;">
+        <div class="col-md-4 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <div class="image-upload">
+              <img title="change Profile photo" class="rounded-circle mt-5 img " width="150px"
+                src="{{(user.photoURL) ? user.photoURL : '/assets/no-image.png'}}">
+            </div>
+            <span class="font-weight-bold">{{user.lastName}}</span>
+            <span class="font-weight-bold">{{user.firstName}}</span>
+
+            <span class="text-black-50">{{user.phoneNumber?? ""}}</span><span> </span>
+          </div>
+        </div>
+
+        <div style="padding-top: 10px;" class="col-md-8 border-left">
+          <h4>Consultation</h4>
+          <form style="width: 600px !important" #userForm="ngForm" (ngSubmit)="onUpdate()">
+            <!--  -->
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" #lastName="ngModel" [(ngModel)]="user.lastName" name="lastName"
+                placeholder="Enter your Last Name">
+            </mat-form-field>
+
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>first Name</mat-label>
+              <input matInput type="text" #firstName="ngModel" [(ngModel)]="user.firstName" name="firstName"
+                placeholder="Enter your First Name">
+            </mat-form-field>
+
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput type="text" name="email" placeholder="Enter your email" #email="ngModel"
+                [(ngModel)]="user.email">
+            </mat-form-field>
+
+
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>GSM</mat-label>
+              <input matInput type="text" placeholder="06 99 99 99 99" name="phoneNumber" #phoneNumber="ngModel"
+                [(ngModel)]="user.phoneNumber">
+            </mat-form-field>
+
+
+            <mat-form-field class="w-100 fs-16" appearance="outline">
+              <mat-label>address</mat-label>
+              <input matInput type="text" class="form-control" name="adresse" #address="ngModel"
+                [(ngModel)]="user.address.city" placeholder="Type">
+            </mat-form-field>
+
+            <p> Type de service </p>
+            <mat-form-field class="w-100 fs-16 " >
+              <select  matNativeControl id="mySelectId"[(ngModel)]="commande.serviceType"
+                  (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="typeServ"  #typeServ="ngModel">
+                  <option value="0">Au cabinet</option>
+                  <option value="1">À domicile</option>
+                  <option value="2">Vidéo consultation</option>
+
+
+                </select>
+            </mat-form-field>
+
+
+        
+            <p> Specialite </p>
+            <mat-form-field class="w-100 fs-16 " >
+              <select  matNativeControl id="mySelectId" [(ngModel)]="commande.specialite"
+              (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="specialite"
+              #specialite="ngModel">
+              <option *ngFor="let specialite of specialites " [value]="specialite.id"> {{ specialite.name }}</option>
+
+                </select>
+            </mat-form-field>
+
+      
+
+    
+            <p> Affectation du doctor</p>
+
+            <mat-form-field class="w-100 fs-16 description">
+              <select  matNativeControl id="mySelectId" [(ngModel)]="traitement.id_praticien" name="id_praticien" >
+                <option *ngFor="let praticien of doctor;  " [value]="praticien?.uid">
+               Dr   {{ praticien?.lastName }}    {{ praticien?.firstName }}                </option>
+              </select>
+            </mat-form-field>
+
+        
+            <br><br>
+            <div>
+              <p>le jour favorable</p>
+
+              <mat-form-field class="w-100 fs-16 description">
+                <input matInput [matDatepicker]="dp" [(ngModel)]="dateFavorable" name="dateFavorable" disabled>
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp></mat-datepicker>
+              </mat-form-field>
+      
+            </div>
+            <p>l'heure favorable</p>
+
+            <mat-form-field class="w-100 fs-16 description">
+              <input matInput [(ngModel)]="traitement.rdv.hour" name="hour" disabled>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 fs-16 description" appearance="outline">
+              <mat-label>Notes </mat-label>
+              <textarea matInput rows="6" placeholder="Write your message" [(ngModel)]="commande.description" 
+                name="description" id="discription"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="w-100 fs-16 description">
+              <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time exacte " [(ngModel)]="dateExacte" name="dateExacte">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+            </mat-form-field>
+
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+              <!-- This is the tree node template for leaf nodes -->
+              <mat-tree-node *matTreeNodeDef="let node " matTreeNodePadding>
+                <!-- use a disabled button to provide padding for tree leaf -->
+                <a mat-icon-button disabled></a>
+                <a href="#" style="color: black; text-decoration: none !important; "
+                  *ngFor=" let name of node.name ; index as i">
+
+                  <div class="image ">
+                    <img src="{{name}}"
+                      style="color: black; text-decoration: none; width: 130px;height:250px;padding-bottom: 30%; z-index: 40000000;padding-bottom: 30%; "
+                      *ngIf="(name).includes('jpg')" alt=Text de remplacement>
+                  </div>
+                  <audio controls src="{{name}}" style="color: black; text-decoration: none;"
+                    *ngIf="(name).includes('aac')"> </audio>
+                  <a href="{{name}}" style="color: black; text-decoration: none !important; padding: 5px; "
+                    *ngIf="(name).includes('pdf')" target="_blank">
+                    File Form PDF {{ i + 1 }}
+                  </a>
+
+                </a>
+
+              </mat-tree-node>
+              <!-- This is the tree node template for expandable nodes -->
+              <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+                <a mat-icon-button matTreeNodeToggle [attr.aria-label]="'Toggle ' + node.name">
+                  <mat-icon mat-list-icon>folder</mat-icon>
+                </a>
+                {{node.name}}
+              </mat-tree-node>
+            </mat-tree>
+
+            <p>   Le temps d'arriver  :      <span class="font-weight-bold">{{ hours +'h'+ minute + ' min '}}</span></p> 
+
+            <button type="submit" style="margin: 20%; " mat-raised-button [disabled]="!userForm.valid" mat-button
+              color="primary">Save Commande</button>
+
+
+          </form>
+
+        </div>
+        <!--row - left element-->
+      </div><!--  row-->
+
+
+  </div>

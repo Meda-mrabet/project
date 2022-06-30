@@ -1,0 +1,17 @@
+::ng-deep .cdk-overlay-container{
+    z-index:1000;
+    top: 8px;
+  }
+
+  #icon:hover+.parole {
+    display: block;
+  }
+  
+  .parole {
+    background-color: rgb(10, 10, 9);
+    width: 50px;
+    color: aliceblue;
+    display: none;
+    border-radius: 5px;
+    text-align: center;
+  }

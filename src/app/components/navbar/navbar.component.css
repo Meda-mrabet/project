@@ -1,0 +1,58 @@
+.alert-danger {
+
+    position: fixed;
+    padding-right: 10rem;
+    padding-bottom: 5rem;
+    padding-left: 4rem;
+    animation-duration: 1s;
+    animation-name: slidein;
+    margin-left: 50%;
+    z-index:10000
+}
+.alert-primary {
+
+  position: fixed;
+  padding-right: 10rem;
+  padding-bottom: 5rem;
+  padding-left: 4rem;
+  animation-duration: 1s;
+  animation-name: slidein;
+  margin-left: 50%;
+  z-index:10000
+}
+.alert-warning {
+
+  position: fixed;
+  padding-right: 10rem;
+  padding-bottom: 5rem;
+  padding-left: 4rem;
+  animation-duration: 1s;
+  animation-name: slidein;
+  margin-left: 50%;
+  z-index:10000
+}
+  
+@keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 200%;
+    }
+  
+    to {
+      margin-left: 50%;
+      width: 100%;
+    }
+  }
+
+  .icon {
+
+    padding-right: 35px;
+    padding-left: 2px;
+
+  }
+
+ 
+  .icone{
+    padding-right: 13px;
+    padding-left: 3px;
+  }

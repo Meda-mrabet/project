@@ -1,0 +1,129 @@
+<mat-toolbar color="primary" class="mat-elevation-z4" >
+  <span>
+    <button mat-mini-fab (click)="sidenav?.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="logo">
+    </span>
+    <span class="title" style="padding-left: 20px;">{{ title }}</span>
+  </span>
+  <span class="spacer"></span>
+  <nav style="position: right; margin-left: 70%;">
+
+    <a style="color: rgb(255, 255, 255);" mat-button class="nav-link" *ngFor="let link of links"
+      [routerLink]="link.path" routerLinkActive="active">
+      <mat-icon>
+        {{ link.icon }}
+      </mat-icon>
+      {{ link.title }}
+    </a>
+
+  </nav>
+
+  <!-- Include text description of the icon's meaning for screen-readers -->
+</mat-toolbar>
+
+<mat-sidenav-container style="height: 100%; "   >
+  <mat-sidenav style="width: 11%; padding-left:10px" #sidenav mode="side" class="app-sidenav">
+    <br>
+    <nav style="padding-left: 10px;">
+      <a ngClass="icons" mat-button class="nav-link" *ngFor="let link of links" [routerLink]="link.path"
+        routerLinkActive="active">
+        <mat-icon>
+          {{ link.icon }}
+        </mat-icon>
+        {{ link.title }}
+      </a>
+    </nav>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+    <nav style="padding-left: 10px;">
+
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard">
+              <mat-icon class="icon"> equalizer</mat-icon>Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cold">
+              <mat-icon class="icon">assignment</mat-icon>Consultations
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/urgence">
+              <i class='fas fa-ambulance fa-lg icone' ></i>Urgences
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/advice">
+              <mat-icon class="icon">assignment_turned_in</mat-icon>Conseils
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" routerLink="/profile">
+              <mat-icon class="icon">account_circle</mat-icon>Compte
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/users">
+              <i class="fas fa-users fa-lg icone" ></i>Utilisateurs
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/clients">
+              <i class='fas fa-users-cog fa-lg icone'></i>Liste des clients
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/appointement">
+              <i class="fa fa-calendar fa-lg icone"></i> Gestion de rendez-vous
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/ordonnance">
+              <mat-icon class="icon">receipt</mat-icon>Creer une ordonnance
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/archives">
+             <i class='fas fa-archive fa-lg icone'></i>Archives
+            </a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link"routerLink="#">
+              <i class="fas fa-users"></i>Documents
+            </a>
+          </li> -->
+
+          <!-- Calling SignOut() Api from AuthService -->
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()">
+              <i class="fas fa-sign-out-alt icone"></i> Se déconnecter
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+  </mat-sidenav>
+
+  <div class="container">
+    <p *ngFor="let alert of alerts">
+
+      <ngb-alert [type]="alert.type" (closed)="close(alert)">
+        <p>{{ alert.message.title}}{{ alert.message.icon}}
+
+        </p> {{alert.message.body}}
+      </ngb-alert>
+    </p>
+    <p></p>
+    <router-outlet></router-outlet>
+
+
+  </div>
+</mat-sidenav-container>

@@ -1,0 +1,114 @@
+.image-upload{
+  margin-top: 0px !important;
+  margin: 10px ;
+
+}
+.cdk-overlay-container {
+  position: fixed;
+  z-index: 1051;
+}
+.cdk-overlay-pane{
+  z-index: 1333;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+td {
+  padding-right: 8px;
+}
+.option{
+    width: 100%;
+}
+.input{
+    height: 100px;
+    width: 100%;
+}
+.description{
+  margin-top: 30px;
+}
+.title{
+width: 600px !important;
+
+}
+::ng-deep .cdk-overlay-container{
+z-index:1000;
+}
+
+.example-month-picker .mat-calendar-period-button {
+pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+display: none;
+}
+.zoom {
+  width: 320px;
+  height: 300px;
+  }
+  .image {
+  
+  width:150px;
+    
+}
+  .image img {
+  /* La transition s'applique à la fois sur la largeur et la hauteur, avec une durée d'une seconde. */
+  -webkit-transition: all 0.3s ease; /* Safari et Chrome */
+  -moz-transition: all 0.3s ease; /* Firefox */
+  -ms-transition: all 0.3s ease; /* Internet Explorer 9 */
+  -o-transition: all 0.3s ease; /* Opera */
+  transition: all 0.3s ease;
+  }
+  .image:hover img {
+    z-index: 1000000;
+  /* L'image est grossie de 25% */
+  -webkit-transform:scale(3); /* Safari et Chrome */
+  -moz-transform:scale(3); /* Firefox */
+  -ms-transform:scale(3); /* Internet Explorer 9 */
+  -o-transform:scale(3); /* Opera */
+  transform:scale(3);
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 10%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+  .option{
+      width: 100%;
+  }
+  .input{
+      height: 100px;
+      width: 100%;
+  }
+  .description{
+    margin-top: 30px;
+  }
+.title{
+  width: 600px !important;
+
+}
+::ng-deep .cdk-overlay-container{
+  z-index:1000000000;
+}
+
+.example-month-picker .mat-calendar-period-button {
+  pointer-events: none;
+}
+
+.example-month-picker .mat-calendar-arrow {
+  display: none;
+}

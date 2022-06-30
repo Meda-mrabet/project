@@ -1,0 +1,261 @@
+<div class="submit-form">
+  <div *ngIf="submitted">
+    <button type="submit" style="margin: 10% 10% 15% 25%;" (click)="newCommande()" mat-raised-button mat-button color="primary">
+     Creer une Autre commande
+    </button>
+  </div>
+</div>
+<div *ngIf="!submitted" class="container form-control p-6"
+  style="padding-left: 10rem !important; padding-right: 50rem !important">
+  <div class="float-end">
+    <button style="width: 3px;" class="btn btn-close" (click)="closeModal()"></button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 border-left title">
+      <h4 style="width: 600px !important; padding-top: 80px">
+      Remplir les informations     </h4>
+      <form style="width: 600px !important" #userForm="ngForm" (ngSubmit)="saveCommande()" class="example-form">
+        <!--  -->
+
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <mat-label>Nom</mat-label>
+          <input matInput type="text" #lastName="ngModel" [(ngModel)]="utilisateur.lastName" name="lastName"
+            placeholder="Enter your last Name" />
+        </mat-form-field>
+
+   
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <mat-label>Prenom</mat-label>
+          <input matInput type="text" #firstName="ngModel" [(ngModel)]="utilisateur.firstName" name="firstName"
+            placeholder="Enter your first Name" />
+        </mat-form-field>
+
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput type="text" #address="ngModel" [(ngModel)]="utilisateur.address.city" name="address"
+            placeholder="Enter address" />
+        </mat-form-field>
+       
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <mat-label>Date de Naissance</mat-label>
+          <input matInput [matDatepicker]="dp" [formControl]="date" name="date">
+          <mat-hint>MMMM DD, YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field>
+
+
+        <mat-form-field class="w-100 fs-16" appearance="outline">
+          <mat-label>Tel</mat-label>
+          <input matInput type="text" #problem="ngModel" [(ngModel)]="utilisateur.phoneNumber"
+            placeholder="+212 56 57 48 57" name="phoneNumber" />
+        </mat-form-field>
+
+       
+
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <mat-label>Probleme</mat-label>
+          <input matInput type="text" #problem="ngModel" [(ngModel)]="commande.problem" name="problem"
+            placeholder="Enter  problem" />
+        </mat-form-field>
+
+
+
+        <p> Categorie </p>
+
+        <mat-form-field class="w-100 fs-16 "appearance="outline" >
+          <mat-select [(ngModel)]="commande.categorie" name="categorie" id="categorie" 
+          #categorie="ngModel" >
+            <mat-option value="0">Conseil</mat-option>
+            <mat-option value="1">Consultation</mat-option>
+            <mat-option value="2">Urgence</mat-option>
+
+          </mat-select>
+        </mat-form-field>
+<!-- 
+        <p> specialite</p>
+
+        <mat-form-field class="w-100 fs-16 description">
+          <mat-select [(ngModel)]="commande.specialite"
+              (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="specialite" id="specialite"
+           #specialite="ngModel">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let specialite of specialites " [value]="specialite.id">
+             {{ specialite.name }}          </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br><br> -->
+
+<!-- 
+        <p> Categorie </p>
+
+        <mat-form-field class="w-100 fs-16 ">
+          <mat-select  [(ngModel)]="commande.serviceType"
+          (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="typeServ" id="typeServ"
+           #typeServ="ngModel" >
+            <mat-option value="0">Au cabinet</mat-option>
+            <mat-option value="1">À domicile</mat-option>
+            <mat-option value="2">Vidéo consultation</mat-option>
+
+          </mat-select>
+        </mat-form-field> -->
+        <!-- <mat-form-field appearance="fill">
+          <mat-label>type de service</mat-label>
+          <mat-select disableRipple [(ngModel)]="commande.serviceType"
+          (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="typeServ" >
+            <mat-option value="0">Au cabinet</mat-option>
+            <mat-option value="1">À domicile</mat-option>
+            <mat-option value="2">Vidéo consultation</mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+        <p> Type de service </p>
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+           <select  matNativeControl id="mySelectId"[(ngModel)]="commande.serviceType"
+              (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="typeServ"  #typeServ="ngModel">
+              <option value="0">Au cabinet</option>
+              <option value="1">À domicile</option>
+              <option value="2">Vidéo consultation</option>
+
+
+            </select>
+        </mat-form-field>
+
+        <!-- <div class="form-group" style="padding: 10px;">
+          <label style="padding: 10px;">type de service</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              
+              <i class="bi bi-currency-dollar"></i>
+            </div>
+            <select  matNativeControl id="mySelectId"[(ngModel)]="commande.serviceType"
+              (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="typeServ"  #typeServ="ngModel">
+              <option value="0">Au cabinet</option>
+              <option value="1">À domicile</option>
+              <option value="2">Vidéo consultation</option>
+
+
+            </select>
+
+
+          </div>
+        </div> -->
+<!-- 
+        <p> specialite </p>
+
+        <mat-form-field class="w-100 fs-16 description">
+          <mat-select  [(ngModel)]="commande.specialite"
+          (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="specialite" id="specialite"
+          class="form-control" #specialite="ngModel">
+            <mat-option>None</mat-option>
+            <mat-option *ngFor="let specialite of specialites " [value]="specialite.id">
+              {{ specialite.name }}        </mat-option>
+          </mat-select>
+        </mat-form-field> -->
+
+    
+        <p> Specialite </p>
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+           <select  matNativeControl id="mySelectId" [(ngModel)]="commande.specialite"
+           (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="specialite"
+          #specialite="ngModel">
+          <option *ngFor="let specialite of specialites " [value]="specialite.id"> {{ specialite.name }}</option>
+
+            </select>
+        </mat-form-field>
+
+   
+
+        <!-- <div class="form-group" style="padding: 10px;">
+          <label style="padding: 10px;">specialite</label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="bi bi-currency-dollar"></i>
+            </div>
+
+            <select [(ngModel)]="commande.specialite"
+              (change)="getAllPraticien(commande.serviceType,commande.specialite)" name="specialite" id="specialite"
+              class="form-control" #specialite="ngModel">
+              <option *ngFor="let specialite of specialites " [value]="specialite.id"> {{ specialite.name }}</option>
+
+
+            </select>
+
+          </div>
+        </div> -->
+
+        <p> Affectation du doctor</p>
+
+        <mat-form-field class="w-100 fs-16 " appearance="outline">
+          <select matNativeControl id="mySelectId" [(ngModel)]="traitement.id_praticien" name="id_praticien" >
+            <option *ngFor="let praticien of doctor;  " [value]="praticien?.uid">
+           Dr   {{ praticien?.lastName }}    {{ praticien?.firstName }}           </option>
+          </select>
+        </mat-form-field>
+
+        <br><br>
+        <mat-form-field *ngIf=" traitement.id_praticien != ''" class="w-100 fs-16 " appearance="outline">
+
+          <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time"  (dateInput)="saveHours(traitement.id_praticien,myDatePicker)" [(ngModel)]="myDatePicker">
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          
+          <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+       </mat-form-field>
+      
+            <!-- <mat-form-field *ngIf="commande.serviceType!='' && commande.specialite!='' " appearance="fill"
+              #userForm="ngForm" [formGroup]="dateForm">
+              <mat-label>Date of Appointement</mat-label>
+              <input matInput [matDatepicker]="dob" formControlName="dateOfRdv"
+                (dateInput)="getAllPraticien(commande.serviceType,commande.specialite)" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+
+              <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+              <mat-datepicker #dob></mat-datepicker>
+            </mat-form-field> -->
+
+            <!-- <br> <br>
+            <div *ngIf=" traitement.id_praticien != ''"  >
+              <h5>choose an Hour</h5>
+              <div class="container form-control p-6" style="padding: 4rem 5rem 6rem 5rem !important; ">
+
+                <mat-chip-list aria-label="Fish selection">
+                  <div style="margin:-70px;">
+
+                    <mat-chip color="primary" selected *ngFor="let hour of heures"
+                      (click)="saveHours(traitement.id_praticien,hour )"> {{hour}}</mat-chip>
+                    <mat-chip *ngFor="let hour of trueHoures" disabled> {{hour}}</mat-chip>
+
+                  </div> -->
+            <!-- 
+
+                </mat-chip-list>
+              </div>
+            </div> -->
+            <!-- <div  >
+              <a mat-raised-button  disabled (click)="CreatePopUp(houres,tmp,traitement.id_praticien)" >choose an hour</a>
+
+            </div> -->
+            <label id="example-radio-group-label" >gender</label>
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              class="example-radio-group"
+              [(ngModel)]="utilisateur.sexe">
+              <mat-radio-button class="example-radio-button" *ngFor="let sexe of gender"  [value]="sexe" name="sexe">
+                {{sexe}}
+              </mat-radio-button>
+            </mat-radio-group>
+    
+
+          <button type="submit" style="margin: 20%" mat-raised-button mat-button color="primary">
+            Save Commande
+          </button>
+      </form>
+    </div>
+    <!--row - left element-->
+  </div>
+  <!--  row-->
+</div>
+
+
+

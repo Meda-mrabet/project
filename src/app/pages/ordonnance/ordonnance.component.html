@@ -1,0 +1,94 @@
+      
+<!-- Sidebar navigation -->
+<div style="margin-top: 50px;"> </div>
+<div class="container-fluid"  >
+  <div class="row">
+
+
+
+
+    <!-- Main content -->
+    <main role="main" class="col-md-10 ml-sm-auto col-lg-10 px-4 back">
+      <div class="inner-adjust">
+        <div class=" pb-5  pt-3  mb-3 border-bottom">
+          <div class="rounded shadow p-2 txt-center">
+
+            <h1 class="h2" style="padding-left: 10px;">Creer une ordonnance</h1>
+
+            <!-- <button type="submit" style="margin-left: 80%; " mat-raised-button mat-button
+              color="primary">Create Commande</button> -->
+
+          </div>
+
+        </div>
+        <!-- Show users data when logged in -->
+
+      </div>
+      <div class="inner-adjust" >
+        <div class=" pb-5  pt-5 pl-5  mb-3 border-bottom" >
+          <div class="rounded shadow p-2 txt-center" style="height: 1000px;">
+
+
+            <div style="padding-top: 100px;padding-left: 100px;" class="col-md-8 border-left pl-5" >
+                <h6 class="h2" style="padding-bottom: 40px;"style="padding-left: 10px;" > Remplir les informations </h6>
+
+                <form style="width: 600px !important" #userForm="ngForm" (ngSubmit)="saveOrdonnance(ordonnance)"  >
+                  <!--  -->
+                  <mat-form-field class="w-100 fs-16 description" appearance="outline">
+                    <mat-label>Nom</mat-label> 
+                    <input matInput type="text"   #lastName="ngModel" [(ngModel)]="ordonnance.lastName" name="lastName"
+                    placeholder="Enter your last Name" />
+                  </mat-form-field>
+          
+             
+                  <mat-form-field class="w-100 fs-16 description" appearance="outline">
+                    <mat-label>Prenom</mat-label>
+                    <input matInput type="text"   #firstName="ngModel" [(ngModel)]="ordonnance.firstName" name="firstName"  placeholder="Enter your first Name" />
+                  </mat-form-field>
+  
+                  <mat-form-field class="w-100 fs-16 description" appearance="outline">
+                    <mat-label>Ville</mat-label>
+                    <input matInput type="text"   #city="ngModel" [(ngModel)]="ordonnance.city" name="city"  placeholder="Enter your city" />
+                  </mat-form-field>
+
+                  <mat-form-field class="w-100 fs-16 " appearance="outline">
+                    <mat-label>Date de creation</mat-label>
+                    <input matInput [matDatepicker]="dp" [formControl]="date" name="date" (dateInput)="saveHours()">
+                      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                    <mat-datepicker #dp></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field class="w-100 fs-16 description" appearance="outline">
+                    <mat-label> Description  </mat-label>
+                    
+                    <textarea matInput rows="6" #description="ngModel" [(ngModel)]="ordonnance.description" name="description"
+                    placeholder="Enter description" ></textarea>
+
+                  </mat-form-field>
+          
+                  <mat-form-field class="w-100 fs-16 description" appearance="outline">
+                    <mat-label>Creer par </mat-label>
+                    <input matInput type="text"   #nameOfCreated="ngModel" [(ngModel)]="ordonnance.nameOfCreated" name="nameOfCreated"  placeholder="Enter name of Doctor" />
+                  </mat-form-field>
+  
+  
+                  <button type="submit" mat-raised-button  mat-button
+                    color="primary">Telecharger l'ordonnance <mat-icon>get_app</mat-icon></button>
+  
+  
+                </form>
+  
+              </div>
+
+            <!-- <button type="submit" style="margin-left: 80%; " mat-raised-button mat-button
+              color="primary">Create Commande</button> -->
+
+          </div>
+
+        </div>
+        <!-- Show users data when logged in -->
+
+      </div>
+    </main>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+     match /users/{userId} {
+     		//allow write, read: if isOwner(userId);
+        allow write, read: if true;
+    }
+    
+       match /doctors/{doctorid} {
+      // Only the authenticated user who authored the document can read or write
+      allow read, write: if true;
+      //request.auth != null && request.auth.uid == resource.data.author;
+  }
+  
+       match /specialities/{specialityid} {
+      // Only the authenticated user who authored the document can read or write
+      allow read, write: if true;
+      //request.auth != null && request.auth.uid == resource.data.author;
+  }
+
+
+
+    // Reusable function to determine document ownership
+    function isOwner(userId) {
+        return request.auth.uid == userId
+    }
+  }
+
+}

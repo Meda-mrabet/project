@@ -1,0 +1,36 @@
+        
+      <a type="button"  mat-dialog-close > X </a>
+      
+         <div  class="titre">
+        <h4 >    FeedBack </h4>      
+        </div>
+        <div *ngIf="feedback ==''" > <form  #userForm="ngForm"  [formGroup]="form" (ngSubmit)="save()" >
+          
+          <ngx-star-rating formControlName="rating" [id]="'rating'" class="feedback"  ></ngx-star-rating>
+     
+         <div class="form-group">
+           <label for="avis_patient" style="color:rgb(46, 108, 231);margin-left: 12px; margin-bottom: 30px;">Avis de patient : </label>
+           <input type="text"  class="form-control" formControlName="avis_patient" id="avis_patient" required   style="margin-top:10px ;">
+           <!-- <span *ngIf="address.invalid && (address.dirty || address.touched)">Data Required </span> -->
+         </div>
+         <br><br>
+         <div class="form-group">
+           <label for="avis_praticien" style="color:rgb(46, 108, 231);margin-left: 12px; margin-bottom: 30px;">Avis de praticien : </label>
+           <input type="text"  class="form-control" formControlName="avis_praticien" id="avis_praticien" required   style="margin-top:10px ;">
+           <!-- <span *ngIf="address.invalid && (address.dirty || address.touched)">Data Required </span> -->
+         </div>
+           <button type="submit" style="margin-left: 40%; margin-top: 25px; background-color:  rgb(165, 181, 232); color: aliceblue;" mat-raised-button  mat-button
+            > Save  </button>
+             </form></div> 
+       
+        <div  *ngIf="feedback !=''">
+          <div *ngFor="let avis of feedback"> 
+            <ngx-star-rating [(ngModel)]="avis.rating" class="feedback" [id]="'rating'" [disabled]="true"></ngx-star-rating>
+
+            <h6 style="color:rgb(46, 108, 231) ; margin-left: 12px; margin-bottom: 30px;">Avis de patient :</h6> 
+            <p>{{avis.avis_patient}}</p>
+            <h6 style="color:rgb(46, 108, 231);margin-left: 12px;margin-bottom: 30px;">Avis de praticien :</h6> 
+            <p>{{avis.avis_praticien}}</p>
+              </div>
+        </div>
+ 
